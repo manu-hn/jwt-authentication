@@ -37,6 +37,8 @@ const loginPerson = async (request, response, next) => {
 
         const { email, password } = request.body;
         const userInfo = await PersonSchema.findOne({ email });
+        console.log(email, password)
+        console.log(userInfo)
         if (!userInfo) {
             return response.status(NOT_FOUND).json({ error: true, message: `User not found` });
         }
@@ -44,6 +46,7 @@ const loginPerson = async (request, response, next) => {
         console.log(token)
 
         const userData = {
+            _id: userInfo._id,
             name: userInfo.name,
             email: userInfo.email,
             mobile: userInfo.mobile,
@@ -64,8 +67,9 @@ const updatePerson = async (request, response, next) => {
         const { pid } = request.params
         const { name, email, password } = request.body
 
-
+console.log(request.body)
         const personInfo = await PersonSchema.findOne({ _id: pid })
+       console.log(personInfo)
 
         if (!personInfo) {
             return response.status(NOT_FOUND).json({ error: true, message: `No Data Found`, data: personInfo })
@@ -80,7 +84,7 @@ const updatePerson = async (request, response, next) => {
 
         response.status(OK).json({ error: false, message: 'Details Updated', data })
     } catch (error) {
-
+next(error)
     }
 }
 

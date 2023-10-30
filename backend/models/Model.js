@@ -20,14 +20,8 @@ const PersonSchema = new Schema({
     password:{
         type:String,
         required:true,
-    },
-    otp:{
-        type:String,
-        default:"null",
-        required:true,
-
     }
-});
+},{timestamps : true});
 
 
 module.exports = model('person', PersonSchema);
