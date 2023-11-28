@@ -1,6 +1,6 @@
 # pure-foods-assignment
 
-Hey PureFoods Than you for the opportunity, as you've asked I have completed the task. Here is brief into about it.
+
 
 1. Created API's using Node.js and Express.js
 2. There are 3 APIs One for Registering, One for Login and Last one is For update
